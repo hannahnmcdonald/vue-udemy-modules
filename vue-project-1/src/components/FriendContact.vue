@@ -1,8 +1,11 @@
 <template>
     <li>
     <!-- Props added between curly brackets -->
-        <h2>{{ name }}</h2>
+    <!-- Checks to see if friend is favorite -->
+    <!-- IF true, (favorite) will be printed next to friend's name -->
+        <h2>{{ name }} {{ friendIsFavorite === '1' ? '(Favorite)' : '' }} </h2>
         <!-- On click, fire toggleDetails fx -->
+        <button @click="toggleFavorite"> Toggle Favorite </button>
         <button @click="toggleDetails"> {{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
         <!-- If detailsAreVisible is true, render below items -->
             <ul v-if="detailsAreVisible">
@@ -24,11 +27,46 @@ export default {
     // Props are data properties that are also available in the template
     // MUST be camel case. Vue will automatically convert it to Kebab case
     // MUST be different from data or computed properties
-    props: [
-        'name',
-        'phoneNumber',
-        'emailAddress'
-    ],
+    // Source :
+    // https://v3.vuejs.org/guide/component-props.html
+    // Below ARRAY is the bare minimum for props. 
+    // You may want to share more information. See Props object with more data
+    // props: [
+    //     "name",
+    //     "phoneNumber",
+    //     "emailAddress",
+    //     "isFavorite",
+    // ],
+    // Set required properties & property types
+    // Set default for isFavorite
+    // Provide Object as value 
+    props: {
+        name: {
+            type: String,
+            required: true,
+        },
+        phoneNumer: {
+            type: String,
+            required: true,
+        },
+        emailAddress: {
+            type: String,
+            required: true,
+        },
+        isFavorite: {
+            type: String,
+            // props don't have to be required
+            required: false, 
+            // should prop be missing, provide default value
+            default: '0',
+            // '0' is boolean false for isFavorite
+            // can also hold a validator which can hold a function
+            // Below makes sure that only the values 1 and 0 are returned
+            validator: function (value) {
+                return value === '1' || value === '0'; 
+            }
+        }
+    },
     data() {
         return {
             detailsAreVisible: false,
@@ -37,12 +75,29 @@ export default {
                 name: 'Manuel Lorenz',
                 phone: '111111111',
                 email: 'manuel@localhost.com',
-            }
-        }
+            },
+            // Set equal to recieved prop value
+            friendIsFavorite: this.isFavorite,
+        };
     },
     methods: {
         toggleDetails() {
             this.detailsAreVisible = !this.detailsAreVisible;
+        },
+        // Vue uses uni-directional data flow. 
+        // Data should only be changed in app.vue not friendContact.vue
+        // Changes should not be made in this component- change in app.vue
+        // Ways to fix this:
+        // 1) Change w/parent
+        // 2) Take recieved data as initial data. Change only in friendContact Component, but we are 
+            // Aware of the fact that it cannot be changed in app
+            // See above data property 'friendIsFavorite'
+        toggleFavorite() {
+            if (this.friendIsFavorite === '1') {
+                this.friendIsFavorite = '0';
+            } else {
+                this.friendIsFavorite = '1';
+            }
         }
     }
 }

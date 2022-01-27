@@ -9,6 +9,7 @@
                 name="ManuelLorenz"
                 phone-number="111111111"
                 email-address="manuel@manuel.com"
+                is-favorite="1"
             ></friend-contact>
             <friend-contact
                 name="JulieJones"

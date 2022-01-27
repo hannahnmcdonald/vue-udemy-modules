@@ -10,5 +10,5 @@ import FriendContact from './components/FriendContact.vue';
 const app = createApp(App).mount('#app');
 
 // Pass FriendContact as a second argument to the component method
-// Custon HTML unlocked and can be added as html element in template for App.vue
+// Custom HTML unlocked and can be added as html element in template for App.vue
 app.component('friend-contact', FriendContact )

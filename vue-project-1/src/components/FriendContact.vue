@@ -2,7 +2,7 @@
     <li>
         <h2>{{ friend.name }}</h2>
         <!-- On click, fire toggleDetails fx -->
-        <button @click="toggleDetails"></button>
+        <button @click="toggleDetails"> Show Details </button>
         <!-- If detailsAreVisible is true, render below items -->
             <ul v-if="detailsAreVisible">
                 <li><strong>Phone:</strong>{{ friend.phone }}</li>

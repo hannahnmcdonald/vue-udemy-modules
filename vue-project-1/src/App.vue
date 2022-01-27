@@ -27,8 +27,10 @@
 </template>
 
 <script>
+// Import component
 import FriendContact from './components/FriendContact.vue'
 export default {
+    // Export component
 	components: { FriendContact },
     data() {
         return {

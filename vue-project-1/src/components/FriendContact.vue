@@ -65,6 +65,27 @@ export default {
             default: false,
         }
     },
+    // Document your emits- for clarity
+    // As a string inside an array
+    // SIMPLE VERSION:
+    emits: ['toggle-favorite'],
+    // OR
+    // Can also be an object with keys with a more details configuration (function)
+    // COMPLEX VERSION:
+    // emits: {
+    //     // function recieves data you will emit as parameters (this.id)
+    //     // toggle-favorite is an EVENT that should be handled by a FUNCTION
+    //     'toggle-favorite': function (id) {
+    //         // can also add validation
+    //         // if id is truthy
+    //         if (id) {
+    //             return true
+    //         } else {
+    //             console.warn('Id is missing!!')
+    //             return false
+    //         }
+    //     }
+    // },
     data() {
         return {
             detailsAreVisible: false,

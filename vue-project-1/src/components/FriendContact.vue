@@ -114,8 +114,7 @@ export default {
             // second argument can also be passed in (There is no limit)
 
             // Prop called id listed as second argument. Now when emited, will carry prop as extra data
-            // this.id will carry over the toggleFavoriteStatus method on app.vue (called friendId)
-            
+            // this.id will carry over the toggleFavoriteStatus method on app.vue (called friendId)  
         }
     }
 }

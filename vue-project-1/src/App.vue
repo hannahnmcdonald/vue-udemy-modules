@@ -1,8 +1,20 @@
 <template>
     <section>
-        <h2>My Friends</h2>
+        <header>
+            <h1>My Friends</h1>
+        </header>
         <ul>
-            <friend-contact></friend-contact>
+        <!-- NOTE- Don't put a space between words -->
+            <friend-contact
+                name="ManuelLorenz"
+                phone-number="111111111"
+                email-address="manuel@manuel.com"
+            ></friend-contact>
+            <friend-contact
+                name="JulieJones"
+                phone-number="111111111"
+                email-address="julie@julie.com"
+            ></friend-contact>
         </ul>
     </section>
 </template>
@@ -39,6 +51,8 @@ export default {
 </script>
 
 <style>
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 3rem auto;

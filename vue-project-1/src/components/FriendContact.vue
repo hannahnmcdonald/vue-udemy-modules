@@ -3,7 +3,7 @@
     <!-- Props added between curly brackets -->
     <!-- Checks to see if friend is favorite -->
     <!-- IF true, (favorite) will be printed next to friend's name -->
-        <h2>{{ name }} {{ friendIsFavorite ? '(Favorite)' : '' }} </h2>
+        <h2>{{ name }} {{ isFavorite ? '(Favorite)' : '' }} </h2>
         <!-- On click, fire toggleDetails fx -->
         <button @click="toggleFavorite"> Toggle Favorite </button>
         <button @click="toggleDetails"> {{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
@@ -41,11 +41,15 @@ export default {
     // Set default for isFavorite
     // Provide Object as value 
     props: {
+        id: {
+            type: String,
+            required: true
+        },
         name: {
             type: String,
             required: true,
         },
-        phoneNumer: {
+        phoneNumber: {
             type: String,
             required: true,
         },
@@ -54,17 +58,11 @@ export default {
             required: true,
         },
         isFavorite: {
-            type: String,
+            type: Boolean,
             // props don't have to be required
             required: false, 
             // should prop be missing, provide default value
-            default: '0',
-            // '0' is boolean false for isFavorite
-            // can also hold a validator which can hold a function
-            // Below makes sure that only the values 1 and 0 are returned
-            validator: function (value) {
-                return value === '1' || value === '0'; 
-            }
+            default: false,
         }
     },
     data() {
@@ -77,8 +75,7 @@ export default {
             //     phone: '111111111',
             //     email: 'manuel@localhost.com',
             // },
-            // Set equal to recieved prop value
-            friendIsFavorite: this.isFavorite,
+
         };
     },
     methods: {
@@ -94,6 +91,7 @@ export default {
             // Aware of the fact that it cannot be changed in app
             // See above data property 'friendIsFavorite'
         toggleFavorite() {
+            // 1)
             // No longer needed:
             // Now that isFavorite is a boolean, we can simply check it
             // if (this.friendIsFavorite === '1') {
@@ -101,7 +99,23 @@ export default {
             // } else {
             //     this.friendIsFavorite = '1';
             // }
-            this.friendIsFavorite = !this.friendIsFavorite
+
+            // 2)
+            // this.friendIsFavorite = !this.friendIsFavorite
+            // ABOVE changes the rendering of isFavorite, but does not change it
+            // within the friends array. NEEDS to be changes at the source- w/2 way communication
+            
+            // 3)
+            this.$emit('toggle-favorite', this.id)
+            // $emit() is a built in method that can be called from inside a view component on the this keyword
+            // With this, you can emit your own custom event to which you can listen
+            // $emit() takes in one argument, which is the name of the custom event. USE KEBAB CASE
+            // can be listed like onclick components
+            // second argument can also be passed in (There is no limit)
+
+            // Prop called id listed as second argument. Now when emited, will carry prop as extra data
+            // this.id will carry over the toggleFavoriteStatus method on app.vue (called friendId)
+            
         }
     }
 }

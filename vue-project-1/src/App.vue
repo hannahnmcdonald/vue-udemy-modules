@@ -12,11 +12,16 @@
             <friend-contact
                 v-for="friend in friends"
                 :key="friend.id"
+                :id="friend.id"
                 :name="friend.name"
                 :phone-number="friend.phone"
                 :email-address="friend.email"
-                v-bind:is-favorite="true"
+                v-bind:is-favorite="friend.isFavorite"
+                @toggle-favorite="toggleFavoriteStatus"
             ></friend-contact>
+            <!-- ABOVE- set is-favorite to be dynamic value (friend.isFavorite) and dependent on friends array
+            We want to make sure this isn't hard-coded so we know how to work with dynamic data. 
+            This data could also be coming from a database or API fetch etc.  -->
         </ul>
     </section>
 </template>
@@ -33,18 +38,33 @@ export default {
                     name: 'Manuel Lorenz',
                     phone: '111111111',
                     email: 'manuel@localhost.com',
+                    isFavorite: true
                 },
                 {
                     id: 'julie',
                     name: 'Julie Jones',
                     phone: '111111111',
                     email: 'julie@localhost.com',
+                    isFavorite: false
                 }
             ]
         }
     },
     methods: {
+        // @toggleFavorite within FriendContact.vue, $emit() adds @toggle-favorite 
+        // to our friend-contact component which in turn fires the below fx 
+        toggleFavoriteStatus(friendId) {
+            // Alert works
+            // alert('this works!');
 
+            // Built in JS find method 
+            // Below helps us find the friend whos id is equal the friend's Id that was toggled
+            const identifiedFriend = this.friends.find(
+                (friend) => friend.id === friendId
+            );
+            // Set identified friend equal to what it currently is not
+            identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+        }
     },
     computed: {
 

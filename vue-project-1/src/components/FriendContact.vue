@@ -3,7 +3,7 @@
     <!-- Props added between curly brackets -->
     <!-- Checks to see if friend is favorite -->
     <!-- IF true, (favorite) will be printed next to friend's name -->
-        <h2>{{ name }} {{ friendIsFavorite === '1' ? '(Favorite)' : '' }} </h2>
+        <h2>{{ name }} {{ friendIsFavorite ? '(Favorite)' : '' }} </h2>
         <!-- On click, fire toggleDetails fx -->
         <button @click="toggleFavorite"> Toggle Favorite </button>
         <button @click="toggleDetails"> {{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
@@ -70,12 +70,13 @@ export default {
     data() {
         return {
             detailsAreVisible: false,
-            friend: {
-                id: 'manuel',
-                name: 'Manuel Lorenz',
-                phone: '111111111',
-                email: 'manuel@localhost.com',
-            },
+            // Below not needed due to new v-for loop in FriendContact.vue 
+            // friend: {
+            //     id: 'manuel',
+            //     name: 'Manuel Lorenz',
+            //     phone: '111111111',
+            //     email: 'manuel@localhost.com',
+            // },
             // Set equal to recieved prop value
             friendIsFavorite: this.isFavorite,
         };
@@ -93,11 +94,14 @@ export default {
             // Aware of the fact that it cannot be changed in app
             // See above data property 'friendIsFavorite'
         toggleFavorite() {
-            if (this.friendIsFavorite === '1') {
-                this.friendIsFavorite = '0';
-            } else {
-                this.friendIsFavorite = '1';
-            }
+            // No longer needed:
+            // Now that isFavorite is a boolean, we can simply check it
+            // if (this.friendIsFavorite === '1') {
+            //     this.friendIsFavorite = '0';
+            // } else {
+            //     this.friendIsFavorite = '1';
+            // }
+            this.friendIsFavorite = !this.friendIsFavorite
         }
     }
 }

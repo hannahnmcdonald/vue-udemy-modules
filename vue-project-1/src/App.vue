@@ -5,16 +5,17 @@
         </header>
         <ul>
         <!-- NOTE- Don't put a space between words -->
+        <!-- V-for loop over our friends array. -->
+        <!-- V-for must have Key -->
+        <!-- Now we have Dynamic Data w/v-bind (shorthand is just :)-->
+        <!-- Now we can cut back on code because v-for will dynamically create each component -->
             <friend-contact
-                name="ManuelLorenz"
-                phone-number="111111111"
-                email-address="manuel@manuel.com"
-                is-favorite="1"
-            ></friend-contact>
-            <friend-contact
-                name="JulieJones"
-                phone-number="111111111"
-                email-address="julie@julie.com"
+                v-for="friend in friends"
+                :key="friend.id"
+                :name="friend.name"
+                :phone-number="friend.phone"
+                :email-address="friend.email"
+                v-bind:is-favorite="true"
             ></friend-contact>
         </ul>
     </section>

@@ -1,6 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
+            // Added to friend-contact component:
             // detailsAreVisible: false,
             // Friends Array full of friends objects
             // TO be rendered within the html via v-for loop
@@ -20,6 +21,7 @@ const app = Vue.createApp({
             ]
         }
     },
+    // Added to friend-contact component:
     // methods: {
     //     toggleDetails() {
     //         this.detailsAreVisible = !this.detailsAreVisible;
@@ -36,17 +38,23 @@ app.component('friend-contact', {
     // This component must have its own template as well. USE BACKTICKS
     template: `
         <li v-for="friend in friends" :key="friend.id">
-        <h2>{{ friend.name }}</h2>
-        <button @click="toggleDetails"> {{ detailsAreVisible ? 'Hide' : 'Show' }} Show Details</button>
-        <ul v-if="detailsAreVisible">
-            <li><strong>Phone:</strong>{{ friend.phone }}</li>
-            <li><strong>Email:</strong>{{ friend.email }}</li>
-        </ul>
+            <h2>{{ friend.name }}</h2>
+            <button @click="toggleDetails"> {{ detailsAreVisible ? 'Hide' : 'Show' }} Show Details</button>
+            <ul v-if="detailsAreVisible">
+                <li><strong>Phone:</strong>{{ friend.phone }}</li>
+                <li><strong>Email:</strong>{{ friend.email }}</li>
+            </ul>
         </li>
     `,
     data() {
         return {
-            detailsAreVisible: false
+            detailsAreVisible: false,
+            friend:  {
+                id: 'julie',
+                name: 'Julie Jones',
+                phone: '111111111',
+                email: 'julie@localhost.com',
+            }
         };
     }, methods: {
         toggleDetails() {

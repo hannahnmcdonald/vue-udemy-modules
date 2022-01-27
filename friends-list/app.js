@@ -19,6 +19,28 @@ const app = Vue.createApp({
                 }
             ]
         }
+    },
+    methods: {
+        toggleDetails() {
+            this.detailsAreVisible = !this.detailsAreVisible;
+        }
+    }
+});
+
+// Create new Vue Component
+// Always create identifier which contain a dash- avoids clashing with official html elements
+// ToggleDetails- component specific data and component specific method will help as we 
+// try to fix the issue of 'show details' showing the details of all the contacts, and 
+// not just the specific one that was invoked.
+app.component('friend-contact', {
+    data() {
+        return {
+            detailsAreVisible: false
+        };
+    }, methods: {
+        toggleDetails() {
+            this.detailsAreVisible = !this.detailsAreVisible;
+        }
     }
 });
 

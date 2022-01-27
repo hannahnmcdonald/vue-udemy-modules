@@ -4,4 +4,4 @@ import { createApp } from 'vue';
 // import default export- name flexible
 import App from './App.vue';
 
-createApp(App).mount('');
+createApp(App).mount('#app');

@@ -1,0 +1,38 @@
+<template>
+    <li>
+        <h2>{{ friend.name }}</h2>
+        <!-- On click, fire toggleDetails fx -->
+        <button @click="toggleDetails"></button>
+        <!-- If detailsAreVisible is true, render below items -->
+            <ul v-if="detailsAreVisible">
+                <li><strong>Phone:</strong>{{ friend.phone }}</li>
+                <li><strong>Email:</strong>{{ friend.email }}</li>
+            </ul>
+    </li>
+
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            detailsAreVisible: false,
+            friend: {
+                id: 'manuel',
+                name: 'Manuel Lorenz',
+                phone: '111111111',
+                email: 'manuel@localhost.com',
+            }
+        }
+    },
+    methods: {
+        toggleDetails() {
+            this.detailsAreVisible = !this.detailsAreVisible;
+        }
+    }
+}
+</script>
+
+<style>
+
+</style>

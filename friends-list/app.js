@@ -1,7 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
-            detailsAreVisible: false,
+            // detailsAreVisible: false,
             // Friends Array full of friends objects
             // TO be rendered within the html via v-for loop
             friends: [
@@ -20,11 +20,11 @@ const app = Vue.createApp({
             ]
         }
     },
-    methods: {
-        toggleDetails() {
-            this.detailsAreVisible = !this.detailsAreVisible;
-        }
-    }
+    // methods: {
+    //     toggleDetails() {
+    //         this.detailsAreVisible = !this.detailsAreVisible;
+    //     }
+    // }
 });
 
 // Create new Vue Component
@@ -33,6 +33,17 @@ const app = Vue.createApp({
 // try to fix the issue of 'show details' showing the details of all the contacts, and 
 // not just the specific one that was invoked.
 app.component('friend-contact', {
+    // This component must have its own template as well. USE BACKTICKS
+    template: `
+        <li v-for="friend in friends" :key="friend.id">
+        <h2>{{ friend.name }}</h2>
+        <button @click="toggleDetails"> {{ detailsAreVisible ? 'Hide' : 'Show' }} Show Details</button>
+        <ul v-if="detailsAreVisible">
+            <li><strong>Phone:</strong>{{ friend.phone }}</li>
+            <li><strong>Email:</strong>{{ friend.email }}</li>
+        </ul>
+        </li>
+    `,
     data() {
         return {
             detailsAreVisible: false
@@ -42,6 +53,10 @@ app.component('friend-contact', {
             this.detailsAreVisible = !this.detailsAreVisible;
         }
     }
-});
+}); 
+
+// This component is encapsulated so it does not communicate with first Vue app component
+// Therefore, method toggleDetails() and detailsAreVisible data can be deleted in 
+// app component because they are not needed. (commented out)
 
 app.mount('#app');

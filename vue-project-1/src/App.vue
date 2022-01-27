@@ -4,7 +4,7 @@
             <h1>My Friends</h1>
         </header>
         <!-- Input New Friend Component -->
-        <new-friend></new-friend>
+        <new-friend @add-contact="addContact"></new-friend>
         <ul>
         <!-- V-for loop over our friends array. -->
         <!-- V-for must have Key -->
@@ -67,6 +67,22 @@ export default {
             );
             // Set identified friend equal to what it currently is not
             identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+        },
+        // expect 3 parameters because we are emitting 3 pieces of data: name, phone, email
+        addContact(name, phone, email) {
+            // create new friend object which must have same structure as our friend objects in the friends array
+            const newFriendContact = {
+                // Set unique ID with Date JS FX
+                id: new Date().toISOString(),
+                // Set as incoming arguments
+                name: name,
+                phone: phone,
+                email: email,
+                // false as default
+                isFavorite: false
+            };
+            // push newFriendsContact into array of friends we are displaying with the FriendContact component
+            this.friends.push(newFriendContact);
         }
     },
     computed: {

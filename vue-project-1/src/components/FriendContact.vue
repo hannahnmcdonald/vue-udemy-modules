@@ -133,7 +133,7 @@ export default {
             // $emit() takes in one argument, which is the name of the custom event. USE KEBAB CASE
             // can be listed like onclick components
             // second argument can also be passed in (There is no limit)
-
+            
             // Prop called id listed as second argument. Now when emited, will carry prop as extra data
             // this.id will carry over the toggleFavoriteStatus method on app.vue (called friendId)  
         }

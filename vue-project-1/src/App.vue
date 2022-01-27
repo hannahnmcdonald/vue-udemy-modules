@@ -10,6 +10,7 @@
         <!-- V-for must have Key -->
         <!-- Now we have Dynamic Data w/v-bind (shorthand is just :)-->
         <!-- Now we can cut back on code because v-for will dynamically create each component -->
+        <!-- Toggle-favorite and delete events can be referenced in the component && point to method that handles it -->
             <friend-contact
                 v-for="friend in friends"
                 :key="friend.id"
@@ -19,6 +20,7 @@
                 :email-address="friend.email"
                 v-bind:is-favorite="friend.isFavorite"
                 @toggle-favorite="toggleFavoriteStatus"
+                @delete="deleteContact"
             ></friend-contact>
             <!-- ABOVE- set is-favorite to be dynamic value (friend.isFavorite) and dependent on friends array
             We want to make sure this isn't hard-coded so we know how to work with dynamic data. 
@@ -57,9 +59,6 @@ export default {
         // @toggleFavorite within FriendContact.vue, $emit() adds @toggle-favorite 
         // to our friend-contact component which in turn fires the below fx 
         toggleFavoriteStatus(friendId) {
-            // Alert works
-            // alert('this works!');
-
             // Built in JS find method 
             // Below helps us find the friend whos id is equal the friend's Id that was toggled
             const identifiedFriend = this.friends.find(
@@ -83,6 +82,17 @@ export default {
             };
             // push newFriendsContact into array of friends we are displaying with the FriendContact component
             this.friends.push(newFriendContact);
+        },
+        // TO delete contact, we need to know specifically which one we are deleting, so we need to use our key- the id, which is unique
+        // Our friendId is passed as a second argument in our FriendContact component
+        deleteContact(friendId) {
+            // re-write the array without the friendId we are removing
+            // filter() needs function we provide as an argument
+            this.friends = this.friends.filter(
+                // we are checking for non-equality because if it is not equal, we want to keep it in our array
+                (friend) => friend.id !== friendId
+            );
+            // New friends array created, Vue will re-render UI appropiately
         }
     },
     computed: {

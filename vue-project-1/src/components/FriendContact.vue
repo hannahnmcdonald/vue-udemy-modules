@@ -8,18 +8,28 @@
         <button @click="toggleFavorite"> Toggle Favorite </button>
         <button @click="toggleDetails"> {{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
         <!-- If detailsAreVisible is true, render below items -->
-            <ul v-if="detailsAreVisible">
-                <li>
-                    <strong>Phone:</strong>
-                    {{ phoneNumber }}
-                </li>
-                <li>
-                    <strong>Email:</strong>
-                    {{ emailAddress }}
-                </li>
-            </ul>
+        <ul v-if="detailsAreVisible">
+            <li>
+                <strong>Phone:</strong>
+                {{ phoneNumber }}
+            </li>
+            <li>
+                <strong>Email:</strong>
+                {{ emailAddress }}
+            </li>
+        </ul>
+        <!--Since the friends array is managed in app.vue, we need to use the $emit() method again
+        Simply put- We need to FORWARD the information to App.vue
+        We don't have to put this method inside our methods section, we can use it here inside the click event 
+        It can be called directly from the template-->
+        <!-- The 'this' keyword is not needed here -->
+        <!-- REMEMBER when binding to an event, there are 3 options:
+                1) point to a method
+                2) execute a method that exists
+                3) execute basic Javascript code -->
+        <!-- Pass thru the id as well, so we know specifically what we are deleting -->
+        <button @click="$emit('delete', id)">Delete</button>
     </li>
-
 </template>
 
 <script>
@@ -68,7 +78,7 @@ export default {
     // Document your emits- for clarity
     // As a string inside an array
     // SIMPLE VERSION:
-    emits: ['toggle-favorite'],
+    emits: ['toggle-favorite', 'delete'],
     // OR
     // Can also be an object with keys with a more details configuration (function)
     // COMPLEX VERSION:
@@ -136,7 +146,7 @@ export default {
             
             // Prop called id listed as second argument. Now when emited, will carry prop as extra data
             // this.id will carry over the toggleFavoriteStatus method on app.vue (called friendId)  
-        }
+        },
     }
 }
 </script>

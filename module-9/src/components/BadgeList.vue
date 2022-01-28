@@ -12,7 +12,8 @@
   </section>
 </template>
 
-<style>
+<style scoped>
+/*Scoped makes the styles in this component only effect this component */
 section h2 {
   margin: 0.5rem 0;
   color: #3a3a3a;

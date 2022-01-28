@@ -4,7 +4,8 @@
   </header>
 </template>
 
-<style>
+<style scoped>
+/*Scoped makes the styles in this component only effect this component */
   header {
     width: 100%;
     height: 5rem;

@@ -16,7 +16,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+/*Scoped makes the styles in this component only effect this component */
 .badge {
   display: inline-block;
   padding: 0.5rem 1rem;

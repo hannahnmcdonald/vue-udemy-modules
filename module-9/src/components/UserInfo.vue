@@ -14,7 +14,9 @@ export default {
 };
 </script>
 
-<style>
+
+<style scoped>
+/*Scoped makes the styles in this component only effect this component */
 section {
   margin: 2rem auto;
   max-width: 30rem;

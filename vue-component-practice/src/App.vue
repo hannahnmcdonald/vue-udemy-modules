@@ -4,7 +4,7 @@
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></active-element>
-    <knowledge-base @select-topic="activateTopic"></knowledge-base>
+    <knowledge-base></knowledge-base>
   </div>
 </template>
 
@@ -39,14 +39,31 @@ export default {
       // This is a more dynamic solution, rather than copy and pasting topics, resulting 
       // in a lot of code duplication. Instead we can invoke the provide() method which
       // will dynamically change based off our topic data. And it cuts back on code.
-      topics: this.topics
+      topics: this.topics,
+      // Not executing, just pointing to it
+      selectTopic: this.activateTopic
     };
   },
   methods: {
     activateTopic(topicId) {
-      this.activeTopic = this.topics.find((topic) => topic.id === topicId);
+      this.activeTopic = this.topics.find(
+        (topic) => topic.id === topicId
+      );
     },
   },
+  // mounted life cycle hook on timer for 3s
+  mounted() {
+    // This will test our provide() method by pushing a new topic to our 
+    // topics array. Our code should be dynamic enought to accomodate it
+    setTimeout(() => {
+        this.topics.push({
+          id: 'events',
+          title: 'Events',
+          description: 'Events are important in Vue!',
+          fullText: 'Events allow you to trigger code on demand!'
+      })
+    }, 3000);
+  }
 };
 </script>
 

@@ -2,6 +2,10 @@
   <div>
   <!-- we need to clarify what our base card wraps around -->
   <!-- Implement slot -->
+  <header>
+  <!-- name slots for multiple slots. Default slot can eb unnamed -->
+    <slot name="header"></slot>
+  </header>
     <slot></slot>
   </div>
 </template>
@@ -9,7 +13,7 @@
 <script>
 export default {
     // props: ['']
-    // Props are for data, slots are for html code
+    // Props are for data, slots are for html code (template code)
 }
 </script>
 

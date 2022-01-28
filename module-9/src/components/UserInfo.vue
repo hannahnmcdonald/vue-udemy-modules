@@ -2,10 +2,12 @@
   <section>
   <!-- Wrap content w/base card using Slots-->
   <base-card>
-    <header>
+  <!-- V slot tells vue where to place the content. V-slot needs an argument (name of slot) -->
+    <template v-slot:header>
       <h3>{{ fullName }}</h3>
       <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
-    </header>
+    </template>
+    <!-- leftover content goes to default slot -->
     <p>{{ infoText }}</p>
     </base-card>
   </section>

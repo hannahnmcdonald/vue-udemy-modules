@@ -1,10 +1,13 @@
 <template>
   <section>
-    <div>
+  <!-- Wrap content w/base card using Slots-->
+  <base-card>
+    <header>
       <h3>{{ fullName }}</h3>
       <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
-    </div>
+    </header>
     <p>{{ infoText }}</p>
+    </base-card>
   </section>
 </template>
 
@@ -17,17 +20,10 @@ export default {
 
 <style scoped>
 /*Scoped makes the styles in this component only effect this component */
-section {
-  margin: 2rem auto;
-  max-width: 30rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 1rem;
-}
-
-section div {
+section header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
+
 </style>

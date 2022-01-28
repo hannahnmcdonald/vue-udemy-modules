@@ -4,7 +4,7 @@
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></active-element>
-    <knowledge-base :topics="topics" @select-topic="activateTopic"></knowledge-base>
+    <knowledge-base @select-topic="activateTopic"></knowledge-base>
   </div>
 </template>
 
@@ -30,6 +30,16 @@ export default {
         },
       ],
       activeTopic: null,
+    };
+  },
+  // Provide uses an internal mechanism built into Vue
+  // Providing is only half. We also need to use it somewhere or inject it somewhere (knowledge grid)
+  provide() {
+    return {
+      // This is a more dynamic solution, rather than copy and pasting topics, resulting 
+      // in a lot of code duplication. Instead we can invoke the provide() method which
+      // will dynamically change based off our topic data. And it cuts back on code.
+      topics: this.topics
     };
   },
   methods: {

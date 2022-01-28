@@ -13,7 +13,10 @@
 
 <script>
 export default {
-  props: ['topics'],
+  // Injected from what was provided in app.vue 
+  // You can only inject what has been provided in a higher up level. App.vue is higher (or a parent component)
+  // MUST have parent/child relationship
+  inject: ['topics'],
   emits: ['select-topic']
 };
 </script>

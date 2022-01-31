@@ -7,8 +7,12 @@
       <h3>{{ fullName }}</h3>
       <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
     </template>
-    <!-- leftover content goes to default slot -->
+    <!-- leftover content goes to default slot OR you can specify-->
+      <!-- v-slot default -->
+  <template v-slot:default>
     <p>{{ infoText }}</p>
+    <!-- v-slot default -->
+  </template>
     </base-card>
   </section>
 </template>

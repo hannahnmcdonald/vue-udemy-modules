@@ -3,15 +3,24 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue';
+// import component
+import TeamsList from './components/teams/TeamsList.vue';
+import UsersList from './components/teams/UsersList.vue';
 
 // Call fx- but needs some clarification
 const router = createRouter({
     // Pull from hx
     history: createWebHistory(),
     // Register all the routes- ARRAY OF ROUTES
-    routes: []
+    routes: [
+        { path: '/teams' }, // set the path per component url/teams
+        { path: '/users' }
+    ]
 });
 
 const app = createApp(App)
+
+// use router w/use method
+app.use(router);
 
 app.mount('#app');

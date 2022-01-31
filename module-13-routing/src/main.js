@@ -15,7 +15,8 @@ const router = createRouter({
     routes: [
         { path: '/teams', component: TeamsList }, // set the path per component url/teams
         { path: '/users', component: UsersList }
-    ]
+    ],
+    linkActiveClass: 'active'
 });
 
 const app = createApp(App)

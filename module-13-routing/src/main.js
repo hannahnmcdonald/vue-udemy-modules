@@ -13,8 +13,8 @@ const router = createRouter({
     history: createWebHistory(),
     // Register all the routes- ARRAY OF ROUTES
     routes: [
-        { path: '/teams' }, // set the path per component url/teams
-        { path: '/users' }
+        { path: '/teams', component: TeamsList }, // set the path per component url/teams
+        { path: '/users', component: UsersList }
     ]
 });
 

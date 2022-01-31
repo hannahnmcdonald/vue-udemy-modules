@@ -15,12 +15,12 @@
 
 <script>
 export default {
-  emits: ['set-page'],
-  methods: {
-    setActivePage(page) {
-      this.$emit('set-page', page);
-    },
-  },
+  // emits: ['set-page'],
+  // methods: {
+  //   setActivePage(page) {
+  //     this.$emit('set-page', page);
+  //   },
+  // },
 };
 </script>
 

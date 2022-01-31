@@ -3,10 +3,10 @@
     <nav>
       <ul>
         <li>
-          <button @click="setActivePage('teams-list')">Teams</button>
+          <router-link to="/teams">Teams:</router-link>
         </li>
         <li>
-          <button @click="setActivePage('users-list')">Users</button>
+          <router-link to="/users">Users:</router-link>
         </li>
       </ul>
     </nav>
@@ -49,8 +49,9 @@ li {
   margin: 0 2rem;
 }
 
-button {
-  font: inherit;
+/* router-link is basically an anchor tag */
+a {
+  text-decoration: none;
   background: transparent;
   border: 1px solid transparent;
   cursor: pointer;

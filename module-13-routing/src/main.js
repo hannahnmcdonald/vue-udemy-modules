@@ -5,7 +5,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 // import component
 import TeamsList from './components/teams/TeamsList.vue';
-import UsersList from './components/teams/UsersList.vue';
+import UsersList from './components/users/UsersList.vue';
+import TeamMembers from './components/teams/TeamMembers.vue';
 
 // Call fx- but needs some clarification
 const router = createRouter({
@@ -14,7 +15,9 @@ const router = createRouter({
     // Register all the routes- ARRAY OF ROUTES
     routes: [
         { path: '/teams', component: TeamsList }, // set the path per component url/teams
-        { path: '/users', component: UsersList }
+        { path: '/users', component: UsersList },
+        // dynamic routes go on the end of the list of routes
+        { path: '/teams/:teamId', component: TeamMembers}
     ],
     linkActiveClass: 'active'
 });

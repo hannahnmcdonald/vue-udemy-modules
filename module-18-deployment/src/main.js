@@ -1,4 +1,4 @@
-import { createApp, defineAsyncComponent } from 'vue';
+import { createApp } from 'vue';
 
 import router from './router.js';
 import store from './store/index.js';
@@ -14,7 +14,9 @@ import BaseSpinner from './components/ui/BaseSpinner.vue';
 // only called when needed
 // call import as a fx
 // only when needed
-const BaseDialog = defineAsyncComponent(() => import('./components/ui/BaseDialog.vue'));
+const BaseDialog = () => 
+    import('./components/ui/BaseDialog.vue'
+);
 
 const app = createApp(App)
 

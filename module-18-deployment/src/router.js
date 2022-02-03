@@ -1,4 +1,4 @@
-import { defineAsyncComponent } from 'vue';
+// import { defineAsyncComponent } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 // import CoachDetail from './pages/coaches/CoachDetail.vue';
@@ -10,21 +10,21 @@ import NotFound from './pages/NotFound.vue';
 // import UserAuth from './pages/auth/UserAuth.vue';
 import store from './store/index.js';
 
-// import asynchronously - only if component is needed
-const CoachDetail = defineAsyncComponent(() => 
-  import('./pages/coaches/CoachDetail.vue')
+// render conditionally
+const CoachDetail = () => 
+  import('./pages/coaches/CoachDetail.vue'
 );
-const CoachRegistation = defineAsyncComponent(() => 
-  import('./pages/coaches/CoachRegistration.vue')
+const CoachRegistation = () => 
+  import('./pages/coaches/CoachRegistration.vue'
 );
-const ContactCoach = defineAsyncComponent(() => 
-  import('./pages/requests/ContactCoach.vue')
+const ContactCoach = () => 
+  import('./pages/requests/ContactCoach.vue'
 );
-const RequestsReceived = defineAsyncComponent(() => 
-  import('./pages/requests/RequestsReceived.vue')
+const RequestsReceived = () => 
+  import('./pages/requests/RequestsReceived.vue'
 );
-const UserAuth = defineAsyncComponent(() => 
-  import('./pages/auth/UserAuth.vue')
+const UserAuth = () => 
+  import('./pages/auth/UserAuth.vue'
 );
 
 const router = createRouter({

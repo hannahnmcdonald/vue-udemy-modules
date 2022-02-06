@@ -14,6 +14,7 @@ const router = createRouter({
         { path: '/coaches', component: CoachList },
         { path: '/coaches/:id', 
             component: CoachDetail, 
+            props: true, 
             children: [
                 { path: '/contact', component: ContactCoach } // nested route to contact coach via coach id // coaches/c1/contact
         ] },

@@ -3,6 +3,7 @@
     FILTER
     </section>
     <section>
+        <base-card>
         <div class="controls">
         <button>REFRESH</button>
             <router-link to="/register">Register as Coach</router-link>
@@ -19,6 +20,7 @@
             ></coach-item>
         </ul>
         <h3 v-else>No Coaches</h3>
+        </base-card>
     </section>
 </template>
 

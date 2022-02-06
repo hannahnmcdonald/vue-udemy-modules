@@ -15,7 +15,7 @@ const router = createRouter({
         { path: '/coaches/:id', 
             component: CoachDetail, 
             children: [
-                { path: '/contact', component: ContactCoach } // nested route to contact coach via coach id
+                { path: '/contact', component: ContactCoach } // nested route to contact coach via coach id // coaches/c1/contact
         ] },
         { path: '/register', component: CoachReg },
         { path: '/requests', component: ReqRecieved },
